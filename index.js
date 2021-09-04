@@ -13,7 +13,7 @@ function string(opts = {}) {
     transform(code, id) {
       if (filter(id)) {
         return {
-          code: `export default ${JSON.stringify(code)};`,
+          code: `export default ${JSON.stringify(opts.removeBOM && code.charCodeAt(0) === 0xFEFF ? code.slice(1) : code)};`,
           map: { mappings: "" }
         };
       }
@@ -21,4 +21,5 @@ function string(opts = {}) {
   };
 }
 
-exports.string = string;
+string.string = string
+exports = string;
