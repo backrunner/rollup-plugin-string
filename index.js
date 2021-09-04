@@ -21,5 +21,4 @@ function string(opts = {}) {
   };
 }
 
-string.string = string
-exports = string;
+exports.string = string;
