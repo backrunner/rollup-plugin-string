@@ -13,7 +13,7 @@ function string(opts = {}) {
     transform(code, id) {
       if (filter(id)) {
         return {
-          code: `export default ${JSON.stringify(opts.removeBOM && code.charCodeAt(0) === 0xFEFF ? code.slice(1) : code)};`,
+          code: `module.exports = ${JSON.stringify(opts.removeBOM && code.charCodeAt(0) === 0xFEFF ? code.slice(1) : code)};`,
           map: { mappings: "" }
         };
       }
